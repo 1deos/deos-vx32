@@ -1136,3 +1136,16 @@ syssemrelease(uint32 *arg)
 		error(Ebadarg);
 	return semrelease(s, addr, arg[1]);
 }
+
+long
+sysnsec(ulong *arg)
+{
+	vlong *addr;
+
+	addr = uvalidaddr(arg[0], sizeof(vlong), 1);
+//	validalign(arg[0], sizeof(vlong));
+
+	*addr = todget(nil);
+
+	return 0;
+}
