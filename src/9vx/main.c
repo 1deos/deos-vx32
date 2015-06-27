@@ -55,6 +55,7 @@ static int singlethread;
 
 static void	bootinit(void);
 static void	siginit(void);
+static void machkeyinit(void);
 
 static char*	getuser(void);
 static char*	findroot(void);
@@ -80,8 +81,12 @@ main(int argc, char **argv)
 	char buf[1024];
 	
 	/* Minimal set up to make print work. */
+#ifndef TLS
+	machkeyinit();
+#endif
 	setmach(&mach0);
 	coherence = nop;
+	cmpswap = cmpswap486;
 	quotefmtinstall();
 	
 	nogui = 0;
@@ -695,9 +700,6 @@ setsigsegv(int vx32)
 void
 mach0init(void)
 {
-#ifndef TLS
-	machkeyinit();
-#endif
 
 	conf.nmach = 1;
 	machinit();	/* common per-processor init */
