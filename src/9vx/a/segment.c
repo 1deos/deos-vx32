@@ -483,8 +483,6 @@ ibrk(ulong addr, int seg)
 		if(ns == 0 || ns == s)
 			continue;
 		if(newtop >= ns->base && newtop < ns->top) {
-print("grow segment %d -> %p would overlap %d [%p-%p]\n",
-	seg, newtop, i, ns->base, ns->top);
 			qunlock(&s->lk);
 			error(Esoverlap);
 		}
