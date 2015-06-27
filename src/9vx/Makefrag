@@ -38,6 +38,7 @@ PLAN9_OBJS = \
 		kprocdev.o \
 		label.o \
 		main.o \
+		cmpswap.o \
 		mmu.o \
 		sched.o \
 		sdloop.o \
