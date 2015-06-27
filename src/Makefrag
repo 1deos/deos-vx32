@@ -1,12 +1,12 @@
 # Main top-level makefile fragment for the vx32 virtual machine.
 
 # Compiler flags common to both host and VX32 environment files.
-COMMON_CFLAGS = -g -O3 -MD -std=gnu99 -I. $(CFLAGS)
+COMMON_CFLAGS = -g -O2 -MD -std=gnu99 -I. -fno-stack-protector $(CFLAGS)
 #COMMON_CFLAGS = -g -MD -std=gnu99 -I. $(CFLAGS)
 COMMON_LDFLAGS = -g -L. $(LDFLAGS)
 
 # Host environment compiler options
-HOST_CC		:= $(CC) -fno-inline
+HOST_CC		:= $(CC) -fno-inline -m32 -DARCH=i386
 HOST_LD		:= $(LD)
 HOST_AR		:= $(AR)
 HOST_LDFLAGS	:= $(COMMON_LDFLAGS)
