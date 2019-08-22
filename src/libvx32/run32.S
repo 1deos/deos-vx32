@@ -130,7 +130,6 @@ EXT(vxrun_cleanup):
 	movw	VXEMU_HOST_VS(%eax),VSEG
 
 	cld
-
 	ret
 	
 // Don't put anything here!

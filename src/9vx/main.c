@@ -36,6 +36,8 @@ extern Dev drawdevtab;
 extern Dev fsdevtab;
 extern Dev audiodevtab;
 
+extern void ethersinklink(void);
+
 int	doabort = 1;	// for now
 int	abortonfault;
 char*	argv0;
@@ -198,6 +200,7 @@ main(int argc, char **argv)
 	printinit();
 	procinit0();
 	initseg();
+	ethersinklink();
 	chandevreset();
 	if(!singlethread){
 		makekprocdev(&ipdevtab);

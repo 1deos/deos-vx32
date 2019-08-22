@@ -72,6 +72,7 @@ PLAN9_A_OBJS = \
 		devdraw.o \
 		devdup.o \
 		devenv.o \
+		devether.o \
 		devmnt.o \
 		devproc.o \
 		devpipe.o \
@@ -82,12 +83,14 @@ PLAN9_A_OBJS = \
 		devtls.o \
 		eipfmt.o \
 		encodefmt.o \
+		ethersink.o \
 		fault.o \
 		fcallfmt.o \
 		fmt.o \
 		getfields.o \
 		ipaux.o \
 		latin1.o \
+		netif.o \
 		page.o \
 		parse.o \
 		parseip.o \
@@ -153,7 +156,7 @@ PLAN9_DEPS = \
 	$(HOST_CC) -o $@ $(PLAN9_DEPS) $(PLAN9_GUI_LIBS) -lpthread
 
 9vx/a/%.o: 9vx/a/%.c
-	$(HOST_CC) $(HOST_CFLAGS) -I. -I9vx -I9vx/a -Wall -Wno-missing-braces -c -o $@ $<
+	$(HOST_CC) $(HOST_CFLAGS) -I. -I9vx -I9vx/a -Wall -Wno-missing-braces -fplan9-extensions -Wno-parentheses -c -o $@ $<
 
 9vx/x11/%.o: 9vx/x11/%.c
 	$(HOST_CC) $(HOST_CFLAGS) -I. -I9vx -I9vx/a -I/usr/X11R6/include -I/usr/local/include -Wall -Wno-missing-braces -c -o $@ $<

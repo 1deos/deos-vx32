@@ -79,7 +79,11 @@ vxrun:
 	movl	VXEMU_EDI(%r8),%edi
 
 	// Run translated code
+#ifndef __FreeBSD__
 	ljmpl	*VXEMU_RUNPTR(%r8)	// 'ljmpq' doesn't work - gas bug??
+#else
+	ljmpq	*VXEMU_RUNPTR(%r8)
+#endif
 
 
 // Return from running translated code to the normal host environment.
@@ -126,6 +130,7 @@ vxrun_cleanup:
 	movw	VXEMU_HOST_ES(%rdi),%es
 	movw	VXEMU_HOST_VS(%rdi),VSEG
 
+	cld
 	ret
 	
 // Don't put anything here!

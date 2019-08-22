@@ -23,6 +23,7 @@ extern Dev mntloopdevtab;
 extern Dev dupdevtab;
 extern Dev sddevtab;
 extern Dev capdevtab;
+extern Dev etherdevtab;
 
 Dev *devtab[] = {
 	&rootdevtab,	/* must be first */
@@ -43,6 +44,7 @@ Dev *devtab[] = {
 	&tlsdevtab,
 	&sddevtab,
 	&capdevtab,
+	&etherdevtab,
 	0
 };
 
