@@ -1212,6 +1212,7 @@ sslinit(void)
 	int n;
 	char *cp;
 
+	{static int already; if(!already){fmtinstall('H', encodefmt); already=1;}}
 	n = 1;
 	for(e = encrypttab; e->name != nil; e++)
 		n += strlen(e->name) + 1;
